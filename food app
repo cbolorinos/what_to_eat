@@ -1,0 +1,28 @@
+
+def make_food(filler, vegetable, fat, protein, spices):
+    animal_protein = ""
+    fish = ""
+    if filler == "white rice":
+        filler_time = "20"
+        filler_amount = "2"
+    elif filler == "pasta":
+        filler_time = "12"
+        filler_amount = "4"
+    else:
+        filler_time = "10"
+        filler_amount = "2"
+    if (protein == "beef") or (protein == "chicken") or (protein == "tofu") or (protein == "hot dog"):
+        animal_protein = "and " + protein + " "
+    if protein == "fish":
+        fish = "Debone fish, cut off the tail and cut off the head "
+    return ("Cut the "+vegetable+" "+animal_protein+"into fine slices "
+            +fish+
+            "Put on 4 cups of water to boil " 
+            "When water boils, put "+filler_amount+" cups of "+filler+" in the water. Let it boil for "+filler_time+" minutes "
+            "Put "+fat+" into frying pan and put on low heat "
+            "When oil is hot, put "+vegetable+" "+protein+" into the frying pan "
+            "Sprinkle "+spices+" on the "+vegetable+" "+protein+" "
+            "When the "+vegetable+" "+animal_protein+"are browned, turn off the flame ")
+            
+
+print make_food("rice","onions","butter","eggs","oregano")
