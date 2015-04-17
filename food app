@@ -5,13 +5,14 @@ def pprep(a):
         return "Beat the eggs. "
     else:
         return "Cut the " +a+" into little pieces. "
-def pprep2(a):
-    if a == "fish":
-        return "Put the fish on a separate frying pan. "
-    elif a == "eggs":
-        return "Beat the eggs. "
+def pcook(a,b):
+    if (a == "fish") or (a == "eggs"):
+        return ("Heat some "+b+" on a separate frying pan. "
+                "When the oil is hot, put the "+a+" on the frying pan. "
+                "When the "+a+" are browned, turn off the flame. "
+                )
     else:
-        return "Cut the " +a+" into little pieces. "
+        return "Add the "+a+" into the frying pan. " 
 def ftime(a):
     if a == "white rice":
         return "20"
@@ -19,6 +20,13 @@ def ftime(a):
         return "12"
     else:
         return "10"
+def fquantity(a):
+    if a == "white rice":
+        return "2"
+    elif a == "pasta":
+        return "4"
+    else:
+        return "NEEDS FIX"
 def also(a,b):
     if (a == "") or (b == ""):
         return ""
@@ -29,18 +37,21 @@ def also(a,b):
     
 def make_food(filler, vegetable, fat, protein, spices):
     x = also(vegetable, protein)
-    filler_amount = "4"
+    filler_quantity = fquantity(filler)
     filler_time = ftime(filler)
     protein_prep = pprep(protein)
+    protein_cook = pcook(protein,fat)
     return ("Cut the "+vegetable+" into fine slices. "
             +protein_prep+
             "Put on 4 cups of water to boil. " 
-            "When water boils, put "+filler_amount+" cups of "+filler+" in the water. Let it boil for "+filler_time+" minutes. "
-            "Put "+fat+" into frying pan and put on low heat. "
+            "When water boils, put "+filler_quantity+" cups of "+filler+" in the water. "
+            "Let it boil for "+filler_time+" minutes. "
+            "Put "+fat+" into frying pan and put on low flame. "
             "When the "+fat+" is hot, put "+vegetable+" into the frying pan. "
-            "Sprinkle "+spices+" on the "+vegetable+" "+protein+". "
-            "When the "+vegetable+" "+protein+"are browned, turn off the flame. "
-            "Serve the "+vegetable+" "+protein+"on top of the "+filler+". ")
+            +protein_cook+
+            "Sprinkle "+spices+" on the "+vegetable+". "
+            "When the "+vegetable+" are browned, turn off the flame. "
+            "Serve the "+vegetable+x+protein+" on top of the "+filler+". ")
             
 
 print make_food("white rice","onions","butter","eggs","oregano")
