@@ -27,6 +27,18 @@ def fquantity(a):
         return "4"
     else:
         return "NEEDS FIX"
+def fprep(a):
+    if a == "":
+        return ""
+    else: 
+        return ("Put on 4 cups of water to boil. " 
+          "When water boils, put "+fquantity(a)+" cups of "+a+" in the water. "
+          "Let it boil for "+ftime(a)+" minutes. ")
+def vprep(a):
+    if a == "":
+        return ""
+    else: 
+        return "Cut the "+a+" into small slices."
 def also(a,b):
     if (a == "") or (b == ""):
         return ""
@@ -37,15 +49,12 @@ def also(a,b):
     
 def make_food(filler, vegetable, fat, protein, spices):
     x = also(vegetable, protein)
-    filler_quantity = fquantity(filler)
-    filler_time = ftime(filler)
+    filler_prep = fprep(filler)
+    vegetable_prep = vprep(vegetable)
     protein_prep = pprep(protein)
     protein_cook = pcook(protein,fat)
-    return ("Cut the "+vegetable+" into fine slices. "
-            +protein_prep+
-            "Put on 4 cups of water to boil. " 
-            "When water boils, put "+filler_quantity+" cups of "+filler+" in the water. "
-            "Let it boil for "+filler_time+" minutes. "
+    return (vegetable_prep
+            +protein_prep+filler_prep+
             "Put "+fat+" into frying pan and put on low flame. "
             "When the "+fat+" is hot, put "+vegetable+" into the frying pan. "
             +protein_cook+
