@@ -1,28 +1,46 @@
-
-def make_food(filler, vegetable, fat, protein, spices):
-    animal_protein = ""
-    fish = ""
-    if filler == "white rice":
-        filler_time = "20"
-        filler_amount = "2"
-    elif filler == "pasta":
-        filler_time = "12"
-        filler_amount = "4"
+def pprep(a):
+    if a == "fish":
+        return "Clean and debone fish. "
+    elif a == "eggs":
+        return "Beat the eggs. "
     else:
-        filler_time = "10"
-        filler_amount = "2"
-    if (protein == "beef") or (protein == "chicken") or (protein == "tofu") or (protein == "hot dog"):
-        animal_protein = "and " + protein + " "
-    if protein == "fish":
-        fish = "Debone fish, cut off the tail and cut off the head "
-    return ("Cut the "+vegetable+" "+animal_protein+"into fine slices "
-            +fish+
-            "Put on 4 cups of water to boil " 
-            "When water boils, put "+filler_amount+" cups of "+filler+" in the water. Let it boil for "+filler_time+" minutes "
-            "Put "+fat+" into frying pan and put on low heat "
-            "When oil is hot, put "+vegetable+" "+protein+" into the frying pan "
-            "Sprinkle "+spices+" on the "+vegetable+" "+protein+" "
-            "When the "+vegetable+" "+animal_protein+"are browned, turn off the flame ")
+        return "Cut the " +a+" into little pieces. "
+def pprep2(a):
+    if a == "fish":
+        return "Put the fish on a separate frying pan. "
+    elif a == "eggs":
+        return "Beat the eggs. "
+    else:
+        return "Cut the " +a+" into little pieces. "
+def ftime(a):
+    if a == "white rice":
+        return "20"
+    elif a == "pasta":
+        return "12"
+    else:
+        return "10"
+def also(a,b):
+    if (a == "") or (b == ""):
+        return ""
+    else:
+        return " and "
+    
+  
+    
+def make_food(filler, vegetable, fat, protein, spices):
+    x = also(vegetable, protein)
+    filler_amount = "4"
+    filler_time = ftime(filler)
+    protein_prep = pprep(protein)
+    return ("Cut the "+vegetable+" into fine slices. "
+            +protein_prep+
+            "Put on 4 cups of water to boil. " 
+            "When water boils, put "+filler_amount+" cups of "+filler+" in the water. Let it boil for "+filler_time+" minutes. "
+            "Put "+fat+" into frying pan and put on low heat. "
+            "When the "+fat+" is hot, put "+vegetable+" into the frying pan. "
+            "Sprinkle "+spices+" on the "+vegetable+" "+protein+". "
+            "When the "+vegetable+" "+protein+"are browned, turn off the flame. "
+            "Serve the "+vegetable+" "+protein+"on top of the "+filler+". ")
             
 
-print make_food("rice","onions","butter","eggs","oregano")
+print make_food("white rice","onions","butter","eggs","oregano")
